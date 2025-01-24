@@ -1,6 +1,7 @@
 package org.example;
 
-import java.io.Console;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.security.KeyFactory;
@@ -46,6 +47,12 @@ public class JwtGenerator {
     }
 
     public static String generateJWT(KeyPair keyPair) {
-        return "";
+
+        return Jwts.builder()
+                .setHeaderParam("alg", "RS256")
+                .setHeaderParam("typ", "JWT")
+                .claim("publicKey", Base64.getEncoder().encodeToString(keyPair.getPublic().getEncoded()))
+                .signWith(keyPair.getPrivate(), SignatureAlgorithm.RS256)
+                .compact();
     }
 }

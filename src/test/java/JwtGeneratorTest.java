@@ -44,6 +44,14 @@ public class JwtGeneratorTest {
     @Test
     public void testgenerateJwt() {
 
+        String privateKeyPath ="../rsakeypair/private_key.pem";
+        String publicKeyPath ="../rsakeypair/public_key.pem";
+        assertDoesNotThrow( () -> {
+            KeyPair keyPair = JwtGenerator.loadKeyPair(privateKeyPath, publicKeyPath);
+            String jwtToken= JwtGenerator.generateJWT(keyPair);
 
+            System.err.println(jwtToken);
+
+        });
     }
 }
