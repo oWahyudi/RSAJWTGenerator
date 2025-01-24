@@ -48,7 +48,6 @@ public class JwtGenerator {
 
         // Decode the Base64-encoded private key to a byte array
         byte[] decodedPrivateKey= Base64.getDecoder().decode(privateKeyPEM);
-
         // Create a PKCS8EncodedKeySpec from decoded byte array
         // Private Key is using PKCS8 format
         PKCS8EncodedKeySpec privateKeySpec=new PKCS8EncodedKeySpec(decodedPrivateKey);
