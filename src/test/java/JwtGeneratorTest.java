@@ -26,9 +26,6 @@ public class JwtGeneratorTest {
             assertNotNull(keyPair.getPrivate(),"Private key should not be null");
             assertNotNull(keyPair.getPublic(), "Public key should not be null");
         });
-
-
-
     }
 
     @Test
